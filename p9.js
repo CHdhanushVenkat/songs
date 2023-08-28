@@ -5,13 +5,21 @@ songs.forEach(song =>{
     btn.classList.add("btn")
     
 
-    btn.innerText = song
+    btn.innerText = song;
+    isClicked = false;
     btn.addEventListener('click', ()=>{
-        stopSong()
-
-        document.getElementById(song).play()
+        
+        
         // document.getElementById(song).pause()
-
+        if(isClicked){
+            stopSong();
+            document.getElementById(song).pause();
+            isClicked = false;
+        }
+        else{
+            document.getElementById(song).play();
+            isClicked = true;
+        }
     })
     
 
@@ -23,7 +31,6 @@ function stopSong(){
         const sound = document.getElementById(song)
 
         sound.pause()
-        sound.currentTime = 0;
     })
 }
 
